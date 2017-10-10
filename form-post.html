@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="submitExample">
+    <head>
+        <meta charset="UTF-8">
+        <title>Anguar form post</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script>
+            angular.module('submitExample', [])
+            .controller('ExampleController', ['$scope', function($scope) {
+                $scope.list = [];
+                $scope.text = '';
+                $scope.fun = function() {
+                    if ($scope.text) {
+                        $scope.list.push(this.text);
+                        $scope.text = '';
+                    }//end if
+                }; //end scope.submit
+            }]); //end module
+        </script>
+    </head>
+    <body ng-controller="ExampleController">
+        <form>
+            Enter text and hit enter:
+            <input type="text" ng-model="text" name="text" />
+            <input type="submit" id="submit" ng-click="fun()" value="Submit" />
+            <pre>list={{list}}</pre>
+        </form>
+    </body>
+</html>
